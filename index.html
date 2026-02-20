@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNN Business</title>
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+:root {
+    --primary: #0a192f;
+    --secondary: #ff9f1c;
+    --accent: #f5f7fa;
+    --text: #ffffff;
+    --bg: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(10, 25, 47, 0.85);
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text);
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.cta-buttons .btn-primary {
+    background: var(--secondary);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-primary:hover {
+    background: #d88b1b;
+}
+
+.cta-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.features .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: transform 0.3s ease;
+}
+
+.features .feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.about img {
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    background: #0a192f;
+    color: var(--text);
+    padding: 60px 0;
+}
+
+.footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer .social-icons a {
+    color: var(--text);
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+}
+
+.footer-bottom a {
+    color: var(--secondary);
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #d88b1b;
+}
+
+@media (max-width: 1024px) {
+    .footer-column {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .features .feature-card, .testimonials .card {
+        margin-bottom: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">CNN Business</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://videos.pexels.com/[relevant-video-id]/[video-name].mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center">
+            <h1>Empowering Global Enterprises</h1>
+            <p>Trusted by Fortune 500 companies worldwide.</p>
+            <div class="cta-buttons mt-4">
+                <a href="#" class="btn btn-primary me-3">Request Demo</a>
+                <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="bi bi-chevron-down"></span>
+        </div>
+    </section>
+    
+    <section id="features" class="features container my-5">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="feature-card p-4">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <h3>Data Analytics</h3>
+                    <p>Leverage insights to drive strategic decisions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card p-4">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    <h3>Security</h3>
+                    <p>Top-tier security to protect your business data.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card p-4">
+                    <i class="bi bi-people-fill"></i>
+                    <h3>Consulting</h3>
+                    <p>Expert guidance for business transformation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>We are a trusted partner for leading companies worldwide, committed to delivering innovative solutions that drive growth and efficiency.</p>
+                <ul>
+                    <li>Founded in 1990</li>
+                    <li>500+ global clients</li>
+                    <li>99% customer satisfaction</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/500x300" alt="About Image" class="img-fluid">
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="services container my-5">
+        <h2 class="text-center">Our Services</h2>
+        <div class="tab-content">
+            <ul class="nav nav-tabs justify-content-center mb-4">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#consulting">Consulting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#audit">Audit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#development">Development</a>
+                </li>
+            </ul>
+            <div class="tab-pane fade show active" id="consulting">
+                <p>Our consulting services help businesses innovate and transform to drive growth and efficiency.</p>
+            </div>
+            <div class="tab-pane fade" id="audit">
+                <p>Comprehensive audit services to ensure compliance and enhance business performance.</p>
+            </div>
+            <div class="tab-pane fade" id="development">
+                <p>Custom development solutions to support your business goals and objectives.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials container my-5">
+        <h2 class="text-center">Testimonials</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <img src="https://via.placeholder.com/80" alt="Avatar" class="rounded-circle mb-3">
+                    <p>"Outstanding service with exceptional results. Highly recommend!"</p>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <img src="https://via.placeholder.com/80" alt="Avatar" class="rounded-circle mb-3">
+                    <p>"Professional and efficient. They exceeded our expectations."</p>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <img src="https://via.placeholder.com/80" alt="Avatar" class="rounded-circle mb-3">
+                    <p>"A reliable partner for our business needs. Fantastic team!"</p>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-half"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery container my-5">
+        <h2 class="text-center">Gallery</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="https://via.placeholder.com/600x400" data-bs-toggle="lightbox">
+                    <img src="https://via.placeholder.com/300" class="img-fluid" alt="Gallery Image">
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://via.placeholder.com/600x400" data-bs-toggle="lightbox">
+                    <img src="https://via.placeholder.com/300" class="img-fluid" alt="Gallery Image">
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://via.placeholder.com/600x400" data-bs-toggle="lightbox">
+                    <img src="https://via.placeholder.com/300" class="img-fluid" alt="Gallery Image">
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact container my-5">
+        <h2 class="text-center">Contact Us</h2>
+        <form class="contact-form">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </section>
+    
+    <footer class="footer">
+        <div class="container footer-container py-5">
+            <div class="row">
+                <div class="col-md-3 footer-column mb-4">
+                    <h3>CNN Business</h3>
+                    <p>Empowering businesses with innovative solutions.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 footer-column mb-4">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-column mb-4">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Consulting</a></li>
+                        <li><a href="#">Audit</a></li>
+                        <li><a href="#">Development</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-column mb-4">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest news</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required class="form-control mb-3">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center py-3">
+            <p>&copy; 2026 CNN Business. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.2 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
